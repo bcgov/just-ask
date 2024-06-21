@@ -24,6 +24,26 @@ A management api/interface for organizations to self-serve org membership.
 2. `cd web && npm i`
 3. `npm run start`
 
+### Troubleshooting dev container
+**Error:**
+```
+Error: Cannot find module '/home/node/.vscode-server/data/User/workspaceStorage/a99351aea6a5bd234dcb9a69463ecc7b/ms-vscode.js-debug/bootloader.js'
+Require stack:
+- internal/preload
+    at Function.Module._resolveFilename (node:internal/modules/cjs/loader:1026:15)
+    at Function.Module._load (node:internal/modules/cjs/loader:871:27)
+    at internalRequire (node:internal/modules/cjs/loader:169:19)
+    at Module._preloadModules (node:internal/modules/cjs/loader:1373:5)
+    at loadPreloadModules (node:internal/bootstrap/pre_execution:583:5)
+    at prepareMainThreadExecution (node:internal/bootstrap/pre_execution:95:3)
+    at node:internal/main/run_main_module:9:1 {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [ 'internal/preload' ]
+```
+**Solution:**
+
+* Toggle "VSCode -> View -> Command Palette -> Debug: Toggle Auto Detach" to Disabled and then Smart
+
 ## Docs
 
 Checkout out [justask.cloud](https://justask.cloud) for the app documentation.

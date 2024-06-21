@@ -2,13 +2,21 @@
 ARG VARIANT=12
 FROM mcr.microsoft.com/vscode/devcontainers/javascript-node:0-${VARIANT}
 
+# yarn invalid key fix
+# https://github.com/yarnpkg/yarn/issues/7866
+# https://tickets.dominodatalab.com/hc/en-us/articles/12830637385364-Yarn-Package-invalid-key
+ENV YARNKEY=yarn-keyring.gpg
+RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo gpg --dearmour -o /usr/share/keyrings/$YARNKEY && \
+    echo "deb [signed-by=/usr/share/keyrings/$YARNKEY] https://dl.yarnpkg.com/debian stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+
 # Install MongoDB command line tools
-ARG MONGO_TOOLS_VERSION=4.2
-RUN curl -sSL "https://www.mongodb.org/static/pgp/server-${MONGO_TOOLS_VERSION}.asc" | (OUT=$(apt-key add - 2>&1) || echo $OUT) \
-    && echo "deb http://repo.mongodb.org/apt/debian $(lsb_release -cs)/mongodb-org/${MONGO_TOOLS_VERSION} main" | tee /etc/apt/sources.list.d/mongodb-org-${MONGO_TOOLS_VERSION}.list \
+ENV MONGO_VERSION 5.0
+RUN wget -qO - https://www.mongodb.org/static/pgp/server-${MONGO_VERSION}.asc | apt-key add - \
+    && echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/${MONGO_VERSION} multiverse" | tee /etc/apt/sources.list.d/mongodb-org-${MONGO_VERSION}.list \
     && apt-get update && export DEBIAN_FRONTEND=noninteractive \
-    && apt-get install -y mongodb-org-tools mongodb-org-shell \
+    && apt-get install -y mongodb-database-tools \
     && apt-get clean -y && rm -rf /var/lib/apt/lists/*
+
 
 # Update args in docker-compose.yaml to set the UID/GID of the "node" user.
 ARG USER_UID=1000
