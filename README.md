@@ -1,5 +1,6 @@
 # [Just Ask](https://justask.cloud)
-[![Aqua Trivy Vulnerability Scanner](https://github.com/patricksimonian/just-ask/actions/workflows/trivy.yaml/badge.svg)](https://github.com/patricksimonian/just-ask/actions/workflows/trivy.yaml)
+[![Lifecycle:End-of-life](https://img.shields.io/badge/Lifecycle-End%20of%20life-orange)](https://github.com/bcgov/just-ask/)
+[![Aqua Trivy Vulnerability Scanner](https://github.com/bcgov/just-ask/actions/workflows/trivy.yaml/badge.svg)](https://github.com/bcgov/just-ask/actions/workflows/trivy.yaml)
 
 This project is end-of-life. It provides a landing page with links to instructions to join the `bcgov` and `bcgov-c` GitHub organizations. 
 
