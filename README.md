@@ -33,7 +33,7 @@ podman run -d -p 2015:2015 just-ask
 
 # Deployment
 
-The project is deployed via ArgoCD.
+The project is deployed via a workflow in the [bcgov/bcgov-just-ask](https://github.com/bcgov/bcgov-just-ask) repo.
 
 # Contributions
 
