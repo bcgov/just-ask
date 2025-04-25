@@ -1,7 +1,6 @@
-FROM node:23-alpine3.21@sha256:86703151a18fcd06258e013073508c4afea8e19cd7ed451554221dd00aea83fc as builder
+FROM node:23-alpine3.21@sha256:86703151a18fcd06258e013073508c4afea8e19cd7ed451554221dd00aea83fc AS builder
 
 USER 0
-ENV BUILDER_VERSION 1.1
 
 RUN mkdir /opt/app
 
