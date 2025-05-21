@@ -1,7 +1,4 @@
 node_modules
-tests
-fixtures
-.env* 
 .gitignore
-README.md
-public/config/*
+Dockerfile
+dist

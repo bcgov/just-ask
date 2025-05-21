@@ -1,1 +1,0 @@
-kustomize: images: - docker.io/sardan5/drone-demo:foo
