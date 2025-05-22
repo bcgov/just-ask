@@ -20,7 +20,7 @@ This project will be archived in the future.
 
 ```
 cd web
-docker build -t just-ask .`
+docker build -t just-ask .
 docker run -d -p 2015:2015 just-ask-trial
 ```
 
