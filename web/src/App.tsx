@@ -24,7 +24,7 @@ const App: React.FC = () => {
           </li>
           <li>
             <Link href="https://developer.gov.bc.ca/docs/default/component/bc-developer-guide/use-github-in-bcgov/bc-government-organizations-in-github/#directions-to-sign-up-and-link-your-account-for-bcgov-c">
-              How to join bcgov-c GitHub organization
+              How to join the bcgov-c GitHub organization
             </Link>
           </li>
         </ul>
