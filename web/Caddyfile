@@ -1,10 +1,15 @@
+{
+	persist_config off
+	admin off
+}
+
 # Where caddy should listen
 :2015
 # Turn on the Web/file server
 file_server
 
 templates {
-        mime application/javascript
+	mime application/javascript
 }
 # The site root
 root * /opt/app-root/www
@@ -12,20 +17,20 @@ root * /opt/app-root/www
 encode zstd gzip
 
 handle /static/* {
-        header Cache-Control "max-age=31536000"
+	header Cache-Control "max-age=31536000"
 }
 
 handle {
-       header Cache-Control "no-cache, must-revalidate"
+	header Cache-Control "no-cache, must-revalidate"
 }
 
 handle /service-worker.js {
-        header Cache-Control "max-age=0, no-cache, no-store, must-revalidate"
+	header Cache-Control "max-age=0, no-cache, no-store, must-revalidate"
 }
 
 header /service-worker.js {
-        # all static assets SHOULD be cached
-        Content-Type "text/javascript"
+	# all static assets SHOULD be cached
+	Content-Type "text/javascript"
 }
 # On OCP we should log to stdout so Prometheus can
 # slurp up the logs for human consumption.
