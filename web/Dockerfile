@@ -1,4 +1,4 @@
-FROM node:23-alpine3.21@sha256:86703151a18fcd06258e013073508c4afea8e19cd7ed451554221dd00aea83fc AS builder
+FROM node:23-alpine3.21@sha256:139be64e98a1374a1c49ee62b23a91f688a37a628422ff8bb9fba94185678ab3 AS builder
 
 USER 0
 
@@ -19,6 +19,13 @@ FROM caddy:2.10.0-alpine@sha256:e2e3a089760c453bc51c4e718342bd7032d6714f15b437db
 
 # Needed to use Caddy's logging format transform
 RUN caddy add-package github.com/caddyserver/transform-encoder   
+
+# From https://docs.redhat.com/en/documentation/openshift_container_platform/4.16/html/images/creating-images#use-uid_create-images
+# Even though the admin and persistent config is turned off in the Caddyfile, caddy still creates files
+# in the data directory. So give it the appropriate permissions.
+RUN mkdir -p /data/caddy && \
+    chgrp -R 0 /data && \
+    chmod -R g=u /data 
 
 ## Default dir for caddy iamge
 
