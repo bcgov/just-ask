@@ -21,7 +21,7 @@ FROM caddy:2.10.0-alpine@sha256:e2e3a089760c453bc51c4e718342bd7032d6714f15b437db
 RUN caddy add-package github.com/caddyserver/transform-encoder   
 
 # From https://docs.redhat.com/en/documentation/openshift_container_platform/4.16/html/images/creating-images#use-uid_create-images
-# Even though the admin and persistent config is turned off in the Caddyfile, caddy still tries to create files
+# Even though the admin and persistent config is turned off in the Caddyfile, caddy still creates files
 # in the data directory. So give it the appropriate permissions.
 RUN mkdir -p /data/caddy && \
     chgrp -R 0 /data && \
